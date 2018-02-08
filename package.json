@@ -1,8 +1,8 @@
 {
   "name": "vue2-leaflet-geosearch",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "GeoSearch plugin extension for vue2-leaflet package",
-  "main": "Vue2LeafletGeosearch.js",
+  "main": "Vue2LeafletGeosearch.vue",
   "repository": {
     "type": "git",
     "url": "https://github.com/fega/vue2-leaflet-geosearch.git"
