@@ -1,86 +1,51 @@
 # vue2-leaflet-markercluster
 
-This is a [markercluster plugin](https://github.com/Leaflet/Leaflet.markercluster) extension for [vue2-leaflet package](https://github.com/KoRiGaN/Vue2Leaflet)
+This is a [GeoSearch plugin](https://github.com/smeijer/leaflet-geosearch) extension for [vue2-leaflet package](https://github.com/KoRiGaN/Vue2Leaflet)
 
 ## Install
-
-    npm install --save vue2-leaflet-markercluster
-
-## Demo
-
-    git clone git@github.com:jperelli/vue2-leaflet-markercluster.git
-    cd vue2-leaflet-markercluster
-    yarn
-    yarn example
-
-    # or alternatively using npm
-    npm install
-    npm run example
-
-Then you should be able to navigate with your browser and see the demo in http://localhost:4000/
-
-You can see the demo code in the file [example.vue](example.vue)
-
+```sh
+npm install --save vue2-leaflet-geosearch leaflet-geosearch
+# or
+yarn add vue2-leaflet-geosearch leaflet-geosearch
+```
 ## Usage
 
-### on &lt;template&gt; add
+Use something like this, where geosearchOptions is the [GeoSearch plugin Options](https://github.com/smeijer/leaflet-geosearch), Also dont forget to add the CSS file `  <link rel="stylesheet" href="https://unpkg.com/leaflet-geosearch@2.6.0/assets/css/leaflet.css">`
 
-something like this
+``` html
+<v-map :zoom=3 :center="location">
+  <v-tilelayer url="http://{s}.tile.osm.org/{z}/{x}/{y}.png"></v-tilelayer>
+  <!-- IMPORTANT PART HERE -->
+  <v-geosearch :options="geosearchOptions" ></v-geosearch>
+  <!-- /IMPORTANT PART HERE -->
+</v-map>
 
-    <v-map :zoom=10 :center="initialLocation">
-      <v-icondefault :image-path="'/statics/leafletImages/'"></v-icondefault>
-      <v-tilelayer url="http://{s}.tile.osm.org/{z}/{x}/{y}.png"></v-tilelayer>
-      <v-marker-cluster>
-        <v-marker v-for="c in cases" v-if="c.location !== null" :lat-lng="c.latlng">
-          <v-popup :content="c.tooltipContent"></v-popup>
-        </v-marker>
-      </v-marker-cluster>
-    </v-map>
+<script>
+import Vue from 'vue';
+import Vue2Leaflet from 'vue2-leaflet';
+import { OpenStreetMapProvider } from 'leaflet-geosearch';
+import VGeosearch from '@/components/Vue2LeafletGeosearch';
 
-### on &lt;script&gt; add
+Vue.component('v-map', Vue2Leaflet.Map);
+Vue.component('v-tilelayer', Vue2Leaflet.TileLayer);
 
-#### option 1
-
-In the same template file, at `<script>` part, this will make the component available only to the template in this file
-
-    import Vue2LeafletMarkerCluster from 'vue2-leaflet-markercluster'
-    ...
-    export default {
-      ...
-      components: {
-        'v-marker-cluster': Vue2LeafletMarkerCluster
-        ...
+export default {
+  components: { VGeosearch },
+  data() {
+    return {
+      geosearchOptions: { // Important part Here
+        provider: new OpenStreetMapProvider(),
       },
-      ...
-    }
+    };
+  },
+};
+</script>
+```
 
-#### option 2
-
-At main Vue configuration, this will make the component available to all templates in your app
-
-    import Vue from 'vue'
-    import Vue2LeafletMarkerCluster from 'vue2-leaflet-markercluster'
-    ...
-    Vue.component('v-marker-cluster', Vue2LeafletMarkerCluster)
-
-### on &lt;style&gt; add
-
-    @import "~leaflet.markercluster/dist/MarkerCluster.css";
-    @import "~leaflet.markercluster/dist/MarkerCluster.Default.css";
-
-## Develop and build
-
-    npm install
-    npm run build
-
-## Author
-
-[Julián Perelli](https://jperelli.com.ar/)
-
-### Contributors
-
- - [Ahmet Özışık](https://github.com/aozisik)
-
-## License
+# License
 
 MIT
+
+# Contribute
+
+Of course :D
