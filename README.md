@@ -1,4 +1,4 @@
-# vue2-leaflet-markercluster
+# vue2-leaflet-geosearch
 
 This is a [GeoSearch plugin](https://github.com/smeijer/leaflet-geosearch) extension for [vue2-leaflet package](https://github.com/KoRiGaN/Vue2Leaflet)
 
