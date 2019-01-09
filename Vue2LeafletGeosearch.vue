@@ -31,7 +31,9 @@ export default {
       parent.addControl(searchControl);
     },
     remove() {
-      this.$parent.removeLayer(this.markerCluster);
+      if (this.markerCluster) {
+        this.$parent.removeLayer(this.markerCluster);
+      }      
     },
     add() {
       if (this.$parent._isMounted) {
