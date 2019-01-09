@@ -1,6 +1,6 @@
 {
   "name": "vue2-leaflet-geosearch",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "GeoSearch plugin extension for vue2-leaflet package",
   "main": "Vue2LeafletGeosearch.vue",
   "repository": {
