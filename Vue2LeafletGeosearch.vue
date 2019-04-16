@@ -1,6 +1,3 @@
-<!--
-This component adds a GeoSearchControl to Leaflet instance
- -->
 <template lang="html">
   <div>
 
