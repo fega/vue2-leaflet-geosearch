@@ -24,7 +24,7 @@ Use something like this, where geosearchOptions is the [GeoSearch plugin Options
 import Vue from 'vue';
 import Vue2Leaflet from 'vue2-leaflet';
 import { OpenStreetMapProvider } from 'leaflet-geosearch';
-import VGeosearch from 'Vue2LeafletGeosearch';
+import VGeosearch from 'vue2-leaflet-geosearch';
 
 Vue.component('v-map', Vue2Leaflet.Map);
 Vue.component('v-tilelayer', Vue2Leaflet.TileLayer);
