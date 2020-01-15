@@ -25,7 +25,8 @@ export default {
   methods: {
     deferredMountedTo(parent) {
       const searchControl = new GeoSearchControl(this.options);
-      parent.addControl(searchControl);
+      parent.addControl(searchControl);      
+      searchControl.getContainer().onclick = e => { e.stopPropagation(); };
     },
     remove() {
       if (this.markerCluster) {
