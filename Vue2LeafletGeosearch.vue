@@ -16,6 +16,11 @@ export default {
     },
   },
   name: 'v-geosearch',
+  data() {
+    return {
+      control: null
+    }
+  }
   mounted() {
     this.add();
   },
@@ -26,8 +31,12 @@ export default {
     deferredMountedTo(parent) {
       const searchControl = new GeoSearchControl(this.options);
       parent.addControl(searchControl);
+      this.control = searchControl;
     },
     remove() {
+      this.$parent.mapObject.removeControl(this.control);
+      this.control = null;
+
       if (this.markerCluster) {
         this.$parent.removeLayer(this.markerCluster);
       }      
