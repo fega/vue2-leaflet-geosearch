@@ -20,7 +20,7 @@ export default {
     return {
       control: null
     }
-  }
+  },
   mounted() {
     this.add();
   },
