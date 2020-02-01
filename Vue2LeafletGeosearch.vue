@@ -15,29 +15,54 @@ export default {
       required: true,
     },
   },
+
   name: 'v-geosearch',
+
   mounted() {
     this.add();
   },
+
   beforeDestroy() {
     this.remove();
   },
+
+  data(){
+    return {
+      searchControl: null,
+    }
+  },
+
   methods: {
-    deferredMountedTo(parent) {
-      const searchControl = new GeoSearchControl(this.options);
-      parent.addControl(searchControl);      
-      searchControl.getContainer().onclick = e => { e.stopPropagation(); };
+    add() {
+      if(this.$parent._isMounted) {
+
+        this.searchControl = new GeoSearchControl(this.options)
+
+        this.$parent.mapObject.addControl(this.searchControl);      
+        this.searchControl.getContainer().onclick = e => { e.stopPropagation(); };
+      }
     },
+
     remove() {
       if (this.markerCluster) {
         this.$parent.removeLayer(this.markerCluster);
       }      
-    },
-    add() {
-      if (this.$parent._isMounted) {
-        this.deferredMountedTo(this.$parent.mapObject);
+
+      if(this.searchControl){
+        this.$parent.mapObject.removeControl(this.searchControl);
+        this.searchControl = null
       }
     },
   },
+
+  watch: {
+    options:{
+      deep: true,
+      handler(){
+        this.remove()
+        this.add()
+      }
+    }
+  }
 };
 </script>
