@@ -18,7 +18,7 @@
   },
   "homepage": "https://github.com/fega/vue2-leaflet-geosearch#readme",
   "dependencies": {
-    "leaflet-geosearch": "^2.6.0",
+    "leaflet-geosearch": "^3.1.0",
     "vue2-leaflet": "^0.0.55"
   },
   "author": "Fabian Gutierrez <fega.hg@gmail.com> (fabiangutierrez.co)"
